@@ -88,7 +88,7 @@ We're interested in how you break down the work and build your solution in a cle
     5. What else would you have liked to improve given more time?
     	1. I'll containerize and run each service as a single unit and i'll be using a message broker for data broadcast.
     	2. Create an api gateway and proxy requests through an API Gateway.
-    	3. Test to observe response from each service.
+    	3. Test to observe response time from each service and config service to use typescript.
     	4. Use asynchronous communication to achieve loose coupling
     	5. Add more unit and integration test for edge cases
 
