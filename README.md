@@ -34,11 +34,65 @@ We're interested in how you break down the work and build your solution in a cle
 **Please make sure to update the readme with**:
 
 - Your new routes
+    Admin - localhost:8083
+    - `/report` Generate report
+   
 - How to run any additional scripts or tests you may have added
+- 
+    ```bash
+    npm test
+    ```
 - Relating to the task please add answers to the following questions;
     1. How might you make this service more secure?
-    2. How would you make this solution scale to millions of records?
-    3. What else would you have liked to improve given more time?
+
+         1. Create an API Gateway
+
+         2. Use OAuth, JWT or any other for user identity and access control
+
+         2. Secure the service-to-service communications
+
+            Effective practices involve authenticating and authorizing requests when two microservices are communicating.
+
+            Generally, there are three main techniques that you can use to secure the interservice communications.
+
+        3. Rate limit & client traffic
+
+            Limiting the external traffic prevent issues such as denial of service (DoS) attacks as well as 
+            instances where some clients consume most of the application bandwidth. One approach is to apply 
+            various rules that can monitor and control the rate of traffic sent or received from a client based on the IP, time, etc.
+
+        4. Use orchestration managers
+
+            The orchestrations managers allow you to automate the configuration, coordination, and other microservices management 
+            tasks in addition to enhancing security. Usually, the tools enable you to manage multiple containers, limit metadata access, 
+            segregate workloads, collect logs, and more.
+	    
+	  		5 Monitor all your systems and services
+            Since microservices rely on distributed systems, you need to have a reliable and effective monitoring strategy for all the individual components.
+            Deploying continuous monitoring allows you to detect and address security risks in good time. Towards this, there is a wide range of microservices 
+            monitoring solutions, including Prometheus, Statsd, InfluxDB, Logstash, etc.
+
+         	6  Protect data at all times (HTTPS)
+            Protect data in transit and at rest. Ideally, enforce the use of HTTPS for all communications, to secure the data in transit, and encryption for all 
+            sensitive data at rest. 
+            Avoid transmitting and storing plain text passwords, keys, credentials, and sensitive data that resides outside the code.
+    
+    
+    3. How would you make this solution scale to millions of records?
+    
+    	1. Code quality: Code is written in a way that is efficient, useful, and maintainable over the long term.
+    	2. 2.Infrastructure planning: application must have adequate server capacity and the ability to react to increased usage.
+    	3. 3.High-level architecture: application components must be arranged optimally for the business case.
+
+
+    5. What else would you have liked to improve given more time?
+    	1. I'll containerize and run each service as a single unit and i'll be using a message broker for data broadcast.
+    	2. Create an api gateway and proxy requests through an API Gateway.
+    	3. Test to observe response from each service.
+    	4. Use asynchronous communication to achieve loose coupling
+    	5. Add more unit and integration test for edge cases
+
+     
   
 
 On completion email a link to your repository to your contact at Moneyhub and ensure it is publicly accessible.
