@@ -4,9 +4,9 @@
   "description": "Code for the backend interview task",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "develop": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "develop": "nodemon src/server.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -21,14 +21,17 @@
   "devDependencies": {
     "@mft/eslint-config-momentumft": "^4.0.0",
     "eslint": "^6.8.0",
-    "nodemon": "^2.0.7"
+    "jest": "^27.4.7",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.2.2"
   },
   "dependencies": {
+    "axios": "^0.25.0",
     "body-parser": "^1.19.0",
     "config": "^3.3.3",
+    "eslint-plugin-jest": "^26.0.0",
     "express": "^4.17.1",
     "helmet": "^5.0.2",
-    "jest": "^27.4.7",
     "json2csv": "^5.0.6",
     "ramda": "^0.27.1",
     "request": "^2.88.2"

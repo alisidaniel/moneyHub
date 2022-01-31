@@ -21,12 +21,14 @@ app.get("/investments/:id", (req, res) => {
   })
 })
 
-app.get("/report", async (req, res) => {
-  request.get(`${config.investmentsServiceUrl}/investments`, (err, r, investments) => {
+app.get("/report", (req, res) => {
+  request.get({url: `${config.investmentsServiceUrl}/investments`, json: true}, async (err, r, investments) => {
     if (err) {
       console.error(err)
     } else {
-      const report = generateCsv(investments)
+      // Generate csv text report
+      const report = await generateCsv(investments)
+      // This export admin generated report to investment service
       request.post({url: `${config.investmentsServiceUrl}/investments/export`, json: true, body: {report}}, function(error, response, body) {
         if (error) {
           console.log(error)
@@ -34,15 +36,9 @@ app.get("/report", async (req, res) => {
           console.log(body)
         }
       })
-      res.send("hello")
+      res.send({report})
     }
   })
 })
 
-app.listen(config.port, (err) => {
-  if (err) {
-    console.error("Error occurred starting the server", err)
-    process.exit(1)
-  }
-  console.log(`Server running on port ${config.port}`)
-})
+module.exports = app
