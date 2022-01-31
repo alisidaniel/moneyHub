@@ -50,6 +50,9 @@ const getInvestment = (item, row, accounts) => {
 // This function maps through each investment holding and returns all holding in an array
 const getInvestmentHoldings = (row, accounts) => R.map(item => getInvestment(item, row, accounts), row.holdings)
 
+/*
+  Function return csv text
+*/
 const generateCsv = async (row) => {
   const accounts = await getAccounts()
   const myObj = R.map(item => getInvestmentHoldings(item, accounts), row)
