@@ -66,31 +66,31 @@ We're interested in how you break down the work and build your solution in a cle
             The orchestrations managers allow you to automate the configuration, coordination, and other microservices management 
             tasks in addition to enhancing security. Usually, the tools enable you to manage multiple containers, limit metadata access, 
             segregate workloads, collect logs, and more.
-
-         5 Monitor all your systems and services
+	    
+	  		5 Monitor all your systems and services
             Since microservices rely on distributed systems, you need to have a reliable and effective monitoring strategy for all the individual components.
             Deploying continuous monitoring allows you to detect and address security risks in good time. Towards this, there is a wide range of microservices 
             monitoring solutions, including Prometheus, Statsd, InfluxDB, Logstash, etc.
 
-         6  Protect data at all times (HTTPS)
+         	6  Protect data at all times (HTTPS)
             Protect data in transit and at rest. Ideally, enforce the use of HTTPS for all communications, to secure the data in transit, and encryption for all 
             sensitive data at rest. 
             Avoid transmitting and storing plain text passwords, keys, credentials, and sensitive data that resides outside the code.
     
     
     3. How would you make this solution scale to millions of records?
-
-           	1.Code quality: Code is written in a way that is efficient, useful, and maintainable over the long term.
-
-	        2.Infrastructure planning: application must have adequate server capacity and the ability to react to increased usage.
-
-	        3.High-level architecture: application components must be arranged optimally for the business case.
+    
+    	1. Code quality: Code is written in a way that is efficient, useful, and maintainable over the long term.
+    	2. 2.Infrastructure planning: application must have adequate server capacity and the ability to react to increased usage.
+    	3. 3.High-level architecture: application components must be arranged optimally for the business case.
 
 
     5. What else would you have liked to improve given more time?
-       a). I'll containerize and run each service as a single unit and i'll be using a message broker for data broadcast.
-       c) Create an api gateway and proxy request through a secure channnel
-       b) Add more unit and integration test for edge cases
+    	1. I'll containerize and run each service as a single unit and i'll be using a message broker for data broadcast.
+    	2. Create an api gateway and proxy requests through an API Gateway.
+    	3. Test to observe response from each service.
+    	4. Use asynchronous communication to achieve loose coupling
+    	5. Add more unit and integration test for edge cases
 
      
   
