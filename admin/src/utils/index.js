@@ -1,26 +1,8 @@
-const axios = require("axios")
-const config = require("config")
 const R = require("ramda")
-
+const {fields} = require("../schema")
 const {Parser} = require("json2csv")
 
-const fields = [
-  {label: "User", value: "userId"},
-  {label: "First Name", value: "firstName"},
-  {label: "Last Name", value: "lastName"},
-  {label: "Date", value: "date"},
-  {label: "Holding", value: "holding"},
-  {label: "Value", value: "value"},
-]
-
-const getAccounts = async () => {
-  try {
-    const resonse = await axios.get(`${config.financialServiceUrl}/companies`)
-    return resonse.data
-  } catch (error) {
-    throw new Error(error)
-  }
-}
+const {getAccounts} = require("../request")
 
 // filter function for accounts
 const getAccount = (a, b) => R.find(R.propEq("id", a), b)
@@ -48,7 +30,7 @@ const getInvestment = (item, row, accounts) => {
 }
 
 // This function maps through each investment holding and returns all holding in an array
-const getInvestmentHoldings = (row, accounts) => R.map(item => getInvestment(item, row, accounts), row.holdings)
+const getInvestmentHoldings =  (row, accounts) => R.map(item => getInvestment(item, row, accounts), row.holdings)
 
 /*
   Function return csv text
@@ -62,4 +44,4 @@ const generateCsv = async (row) => {
   return csv
 }
 
-module.exports = {fields, generateCsv}
+module.exports = {generateCsv}

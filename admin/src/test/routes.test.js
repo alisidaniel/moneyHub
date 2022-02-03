@@ -15,10 +15,14 @@ describe("Admin API service routes test", () => {
     // should respond with a 200 status code
     // should match return obj
     // should specify json in the content type header
-    const res = await request(app).get("/report")
-    expect(res.body).toBeDefined()
-    expect(res.body).toMatchObject({report: expect.any(String)})
-    expect(res.statusCode).toBe(200)
-    expect(res.headers["content-type"]).toEqual(expect.stringContaining("json"))
+    try {
+      const res = await request(app).get("/report")
+      expect(res.body).toBeDefined()
+      expect(res.body).toMatchObject({report: expect.any(String)})
+      expect(res.statusCode).toBe(200)
+      expect(res.headers["content-type"]).toEqual(expect.stringContaining("json"))
+    } catch (error) {
+      expect(error).toMatch("error")
+    }
   })
 })

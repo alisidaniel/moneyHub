@@ -4,6 +4,7 @@ const config = require("config")
 const request = require("request")
 const helmet = require("helmet")
 const {generateCsv} = require("./utils")
+const {exportReport} = require("./request")
 
 const app = express()
 app.use(helmet())
@@ -21,21 +22,15 @@ app.get("/investments/:id", (req, res) => {
   })
 })
 
-app.get("/report", (req, res) => {
+app.get("/report", async (req, res) => {
   request.get({url: `${config.investmentsServiceUrl}/investments`, json: true}, async (err, r, investments) => {
     if (err) {
       console.error(err)
     } else {
       // Generate csv text report
       const report = await generateCsv(investments)
-      // This export admin generated report to investment service
-      request.post({url: `${config.investmentsServiceUrl}/investments/export`, json: true, body: {report}}, function(error, response, body) {
-        if (error) {
-          console.log(error)
-        } else {
-          console.log(body)
-        }
-      })
+      // this line exports report to investment service
+      await exportReport(report)
       res.send({report})
     }
   })
