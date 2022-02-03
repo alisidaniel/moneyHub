@@ -22,7 +22,7 @@ app.get("/investments/:id", (req, res) => {
   })
 })
 
-app.get("/report", async (req, res) => {
+app.get("/report", (req, res) => {
   request.get({url: `${config.investmentsServiceUrl}/investments`, json: true}, async (err, r, investments) => {
     if (err) {
       console.error(err)
